@@ -9,13 +9,18 @@ fun main() {
         print("Enter your choice: ")
         val choice = readLine()
 
+
         when (choice) {
             "1" -> {
                 print("Enter task title: ")
                 val title = readLine()!!
-                print("Enter task description: ")
-                val description = readLine()!!
-                taskManager.addTask(Task(title, description))
+                if (title.any { it.isDigit() }) {
+                    println("Title cannot contain numbers. Please try again.")
+                } else {
+                    print("Enter task description: ")
+                    val description = readLine()!!
+                    taskManager.addTask(Task(title, description))
+                }
             }
 
             "2" -> {
